@@ -1,0 +1,36 @@
+{% extends "admin_index.html" %}
+{%block link1%}{{url_for('admin_page.admin')}}{%endblock%}
+{%block link2%}{{url_for('admin_page.blog')}}{%endblock%}
+{%block active1%}active{%endblock%}
+{%block chat%}
+{% for contact in contacts %}
+<style type="text/css">
+  @media screen and (max-width: 500px){
+      .fonth4{
+        font-size: 20px;
+      }
+      .fonth3{
+        font-size: 18px;
+      }
+      .font{
+        font-size: 9.5px;
+      }
+    } 
+</style>
+            <div class="direct-chat-msg">
+                        <div class="direct-chat-infos clearfix">
+                          <span class="direct-chat-name float-left">bot contact</span>
+                        </div>
+                        <!-- /.direct-chat-infos -->
+                        <img class="direct-chat-img" src="../static/img/user2-160x160.jpg" alt="message user image">
+                        <!-- /.direct-chat-img -->
+                        <div class="direct-chat-text">
+                            <h3 class="fonth4">{{contact.name}}</h3>
+                            <h5 class="blockquote-footer font"><a href="https://mail.google.com/mail/?view=cm&fs=1&to={{contact.email}}">from : {{contact.email}}</a></h5>
+                            <h4 class="fonth3">{{contact.judul_pesan}}</h4>
+                            {{contact.pesan_1}}
+                        </div>
+                        <!-- /.direct-chat-text -->
+                      </div>
+{% endfor%}
+{%endblock%}

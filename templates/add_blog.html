@@ -1,0 +1,15 @@
+{% extends "base_table.html" %}
+{%block link1%}{{url_for('admin_page.admin')}}{%endblock%}
+{%block link2%}{{url_for('admin_page.blog')}}{%endblock%}
+{%block active2%}active{%endblock%}
+{%block table%}
+<form method="post" action="">
+ <div class="card-body">
+ 	<h4>nama</h4>
+ 	<input class="form-control" type="text" name="name" placeholder="name" required>
+ 	<h4>Nomor telfon</h4>
+              <input class="form-control" type="text" name="telp" placeholder="telp"  required>
+            <input class="btn btn-primary" type="submit" value="Submit">
+            </div>
+            	</form>
+{%endblock%}

@@ -1,0 +1,28 @@
+{%extends "web_office/inner-page.html"%}
+{%block blog%}
+
+<section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>{{blog._tittle}}</h2>
+          <ol>
+            <li><a href="{{url_for('office_web.home')}}">OFFICE</a></li>
+            <li>{{blog._tittle}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+      	
+        {{blog._page | safe}}
+        
+      </div>
+    </section>
+
+
+                
+{%endblock%}

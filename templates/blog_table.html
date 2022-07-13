@@ -1,0 +1,57 @@
+{% extends "base_table.html" %}
+{%block link1%}{{url_for('admin_page.two')}}{%endblock%}
+{%block link2%}{{url_for('admin_page.blog')}}{%endblock%}
+{%block active2%}active{%endblock%}
+{%block search%}
+
+<form method="post" action="">
+                  <div class="input-group input-group-sm" style="width: 150px; margin-bottom: 10px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search by username">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default" value="Submit">
+                        <i class="fas fa-search"></i>
+                      </button>
+
+                    </div>
+</form>
+
+{%endblock%}
+
+{%block table%}
+<div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Username</th>
+                      <th>No.hp</th>
+                      <th>Action <a class="btn btn-primary" style="color: white; font-size: 12px; margin-bottom: -4px;margin-top: -6px;" href="/admin/userdata/add" role="button">add</a></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+{% for userdat in userdat %} 
+{% if userdat._date + twodays > sesi%}  
+    <tr>
+        <td>{{userdat._id}}</td>
+        <td>{{userdat.name}}</td>
+        <td>{{userdat.telp}}</td>
+        <td>
+        	<a class="btn btn-warning" style="color: white; font-size: 12px; margin-bottom: -4px;
+        	margin-top: -6px;" href="/admin/userdata/edit/{{userdat.name | safe}}" role="button">edit</a>
+        	<a class="btn btn-danger" style="font-size: 12px; margin-bottom: -4px; margin-top: -6px;" href="/admin/userdata/delete/{{userdat.name | safe}}" role="button">Delete</a>
+        </td>
+     </tr>               
+     {%endif%}
+{% endfor%}
+</tbody>
+                </table>
+                
+              </div>
+              <script type="text/javascript">
+                var judul = {{userdat.name}} 
+                document.write(judul.replace(" " ,'%20'));
+              </script>
+{%endblock%}
+
